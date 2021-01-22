@@ -4,6 +4,7 @@
 [dict, avglen] = huffmandict(symbolsA, probA);
 isequal(dict, my_dict)
 
+H = -sum(probA.*log2(probA));
 
 my_codeA = my_huffmanenco(strA, my_dict);
 codeA = huffmanenco(strA, dict);

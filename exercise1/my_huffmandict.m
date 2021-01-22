@@ -4,7 +4,6 @@ function [dict,avglen] = my_huffmandict(symbols,prob)
        error('Wrong dimensions')
     end
     
-    % ensure to handle cell input vector
     if ~isa(symbols,'cell')
         error('symbols must be a cell vector')
     end
@@ -13,25 +12,22 @@ function [dict,avglen] = my_huffmandict(symbols,prob)
         error('prob must be a double vector')
     end
 
-%     if sum(prob) ~= 1.0
-%        error('prob vector must sum to 1')
-%     end
+    if sum(prob) ~= 1.0
+       error('prob vector must sum to 1')
+    end
 
 
     dict = cell(length(symbols),2);
+    dict(:,1) = symbols;
+
     symbol_indices = num2cell(1:length(symbols));
     prob_copy = prob;
-    
-    for k=1:length(symbols)
-        dict(k,1) = symbols(k);
-    end
     
     while length(symbol_indices) > 1
         [prob,sort_indices] = sort(prob);
         symbol_indices = symbol_indices(sort_indices);
         
-        team1 = symbol_indices{1};
-        team2 = symbol_indices{2};
+        team1 = symbol_indices{1}; team2 = symbol_indices{2};
         
         prob = [sum(prob(1:2)) prob(3:end)];
         symbol_indices = [{[team1 team2]} symbol_indices(3:end)];
@@ -45,7 +41,6 @@ function [dict,avglen] = my_huffmandict(symbols,prob)
             index = team2(k);
             dict{index, 2} = [ 0 , dict{index, 2} ];
         end
-
     end
     
     avglen = 0;

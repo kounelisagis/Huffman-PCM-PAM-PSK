@@ -10,3 +10,5 @@ isequal(my_code, code)
 
 guessedStr = my_huffmandeco(my_code, my_dict);
 isequal(strA, guessedStr)
+
+H = -sum(probA.*log2(probA));
