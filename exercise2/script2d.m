@@ -15,3 +15,15 @@ for N=2:2:6
     error = x - my_x;
     mses2(N/2) = mse(error);
 end
+
+figure
+plot(2:2:6, mses1)
+xlabel('N')
+ylabel('MSE')
+title('MSEs - Uniform Quantizer')
+
+figure
+plot(2:2:6, mses2)
+xlabel('N')
+ylabel('MSE')
+title('MSEs - Lloyd-Max Quantizer')

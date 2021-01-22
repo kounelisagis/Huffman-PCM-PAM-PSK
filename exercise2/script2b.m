@@ -20,6 +20,6 @@ hold on
 plot([2,4,6], sqnrs2,'-o','MarkerIndices', [1,2,3])
 
 legend('My SQNRs','Lloyd\_Max SQNRs')
-xlabel('N') 
-ylabel('SQNR') 
+xlabel('N')
+ylabel('SQNR')
 hold off
